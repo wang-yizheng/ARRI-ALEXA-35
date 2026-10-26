@@ -1,2 +1,67 @@
-# ARRI-ALEXA-35
-ARRI ALEXA 35 是一款专为高端电影制作设计的数字电影摄影机，凭借全新的 Super 35 传感器、17 档动态范围和革命性的色彩科学，重新定义了数字电影影像标准。核心影像能力：搭载全新 4.6K Super 35 CMOS 传感器，原生 ISO 800，支持 17 档动态范围，从高光到阴影都能保留丰富细节；支持 ARRI 最新的 REVEAL 色彩科学，肤色还原更自然，色彩过渡更平滑；支持 ProRes 和 ARRIRAW 格式录制，最高帧率可达 120fps，满足高速摄影需求；内置 ND 滤镜系统，支持 0.6 至 2.1 的密度调节，适应各种光线环境。强悍机身与可靠性：采用坚固的镁合金机身，防尘防水溅设计，适应严苛的拍摄环境；支持 PL、EF 和 LPL 卡口，兼容多种电影镜
+# ARRI ALEXA 35 - Interactive 3D Teardown
+
+🎬 ARRI ALEXA 35 摄影机的交互式 3D 结构拆解可视化页面
+
+## ✨ 特性
+
+- 9 大模块全部程序化建模（Three.js + Canvas 程序纹理）
+- 不依赖任何外部 3D 模型/图片/字体/CDN
+- 交互式爆炸视图，平滑动画过渡
+- 点击模块查看详细技术参数
+- 中英双语界面
+
+## 🚀 快速部署到 GitHub Pages
+
+### 1. 创建仓库并推送代码
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git push -u origin main
+```
+
+### 2. 启用 GitHub Pages
+
+- 进入仓库 **Settings** → **Pages**
+- Source 选择 **GitHub Actions**
+- 推送后自动部署
+
+### 3. 访问网站
+
+`https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`
+
+📖 详细部署指南请查看 [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+## 🛠️ 本地开发
+
+```bash
+npm install
+npm run dev
+```
+
+## 📦 构建
+
+```bash
+npm run build
+```
+
+## 🎮 操作说明
+
+- 🖱️ 左键拖拽 - 旋转
+- 🖱️ 右键拖拽 - 平移
+- 🖱️ 滚轮 - 缩放
+- 🖱️ 点击模块 - 查看详情
+
+## 📋 技术栈
+
+- React 18 + TypeScript
+- Three.js
+- Vite
+- Tailwind CSS
+
+## 📄 License
+
+MIT
