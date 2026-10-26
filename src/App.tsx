@@ -106,7 +106,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-[#0a0a0f] relative overflow-hidden">
+    <div className="w-full h-screen bg-[#f5f5f5] relative overflow-hidden">
       {/* 3D Canvas */}
       <div ref={containerRef} className="absolute inset-0" />
 
@@ -114,22 +114,22 @@ export default function App() {
       <div className="absolute top-0 left-0 right-0 p-4 pointer-events-none z-10">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-white text-2xl font-bold tracking-wider">
+            <h1 className="text-gray-900 text-2xl font-bold tracking-wider">
               <span className="text-[#00c853]">ARRI</span> ALEXA 35
             </h1>
-            <p className="text-gray-400 text-sm mt-1">Interactive 3D Teardown Visualization</p>
+            <p className="text-gray-500 text-sm mt-1">Interactive 3D Teardown Visualization</p>
           </div>
           <div className="text-right">
             <p className="text-gray-500 text-xs">交互式3D结构拆解</p>
-            <p className="text-gray-600 text-xs mt-1">Three.js 程序化建模</p>
+            <p className="text-gray-400 text-xs mt-1">Three.js 程序化建模</p>
           </div>
         </div>
       </div>
 
       {/* Left Panel - Module List */}
       <div className="absolute left-4 top-20 bottom-4 w-64 pointer-events-auto z-10 overflow-y-auto">
-        <div className="bg-black/60 backdrop-blur-md rounded-xl border border-white/10 p-4">
-          <h2 className="text-white text-sm font-semibold mb-3 flex items-center gap-2">
+        <div className="bg-white/80 backdrop-blur-md rounded-xl border border-gray-200 shadow-lg p-4">
+          <h2 className="text-gray-800 text-sm font-semibold mb-3 flex items-center gap-2">
             <span className="w-2 h-2 bg-[#00c853] rounded-full"></span>
             模块列表 / Modules
           </h2>
@@ -140,8 +140,8 @@ export default function App() {
                 onClick={() => handleModuleClick(index)}
                 className={`w-full text-left px-3 py-2 rounded-lg transition-all duration-200 ${
                   selectedModule === index
-                    ? 'bg-[#00c853]/20 border border-[#00c853]/50 text-white'
-                    : 'hover:bg-white/5 text-gray-300 border border-transparent'
+                    ? 'bg-[#00c853]/10 border border-[#00c853]/40 text-gray-900'
+                    : 'hover:bg-gray-100 text-gray-700 border border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -151,7 +151,7 @@ export default function App() {
                   ></span>
                   <div>
                     <div className="text-xs font-medium">{module.nameCN}</div>
-                    <div className="text-[10px] text-gray-500">{module.name}</div>
+                    <div className="text-[10px] text-gray-400">{module.name}</div>
                   </div>
                 </div>
               </button>
@@ -163,35 +163,35 @@ export default function App() {
       {/* Right Panel - Module Info */}
       {selectedModule >= 0 && showInfo && (
         <div className="absolute right-4 top-20 w-80 pointer-events-auto z-10">
-          <div className="bg-black/70 backdrop-blur-md rounded-xl border border-white/10 p-5">
+          <div className="bg-white/85 backdrop-blur-md rounded-xl border border-gray-200 shadow-lg p-5">
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h3 className="text-[#00c853] text-lg font-bold">
+                <h3 className="text-[#00a846] text-lg font-bold">
                   {MODULE_INFO[selectedModule].nameCN}
                 </h3>
-                <p className="text-gray-400 text-xs">
+                <p className="text-gray-500 text-xs">
                   {MODULE_INFO[selectedModule].name}
                 </p>
               </div>
               <button
                 onClick={() => setShowInfo(false)}
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-gray-700 transition-colors"
               >
                 ✕
               </button>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed mb-4">
+            <p className="text-gray-700 text-sm leading-relaxed mb-4">
               {MODULE_INFO[selectedModule].description}
             </p>
             <div className="space-y-2">
-              <h4 className="text-white text-xs font-semibold uppercase tracking-wider">
+              <h4 className="text-gray-800 text-xs font-semibold uppercase tracking-wider">
                 技术参数
               </h4>
               <div className="grid grid-cols-1 gap-1">
                 {MODULE_INFO[selectedModule].specs.map((spec, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-xs text-gray-400"
+                    className="flex items-center gap-2 text-xs text-gray-600"
                   >
                     <span className="w-1 h-1 bg-[#00c853] rounded-full"></span>
                     {spec}
@@ -205,10 +205,10 @@ export default function App() {
 
       {/* Bottom Controls */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-auto z-10">
-        <div className="bg-black/60 backdrop-blur-md rounded-xl border border-white/10 p-4 flex items-center gap-6">
+        <div className="bg-white/80 backdrop-blur-md rounded-xl border border-gray-200 shadow-lg p-4 flex items-center gap-6">
           {/* Explode Slider */}
           <div className="flex items-center gap-3">
-            <span className="text-gray-400 text-xs whitespace-nowrap">拆解</span>
+            <span className="text-gray-600 text-xs whitespace-nowrap">拆解</span>
             <input
               type="range"
               min="0"
@@ -216,7 +216,7 @@ export default function App() {
               step="0.01"
               value={explodeValue}
               onChange={(e) => handleExplodeChange(parseFloat(e.target.value))}
-              className="w-32 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#00c853]"
+              className="w-32 h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-[#00c853]"
             />
             <span className="text-gray-500 text-xs w-8">
               {Math.round(explodeValue * 100)}%
@@ -224,25 +224,25 @@ export default function App() {
           </div>
 
           {/* Divider */}
-          <div className="w-px h-6 bg-white/10"></div>
+          <div className="w-px h-6 bg-gray-200"></div>
 
           {/* Buttons */}
           <div className="flex items-center gap-2">
             <button
               onClick={handleToggleAutoRotate}
-              className="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs text-gray-300 transition-all"
+              className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-lg text-xs text-gray-700 transition-all"
             >
               🔄 自动旋转
             </button>
             <button
               onClick={handleReset}
-              className="px-3 py-1.5 bg-[#00c853]/10 hover:bg-[#00c853]/20 border border-[#00c853]/30 rounded-lg text-xs text-[#00c853] transition-all"
+              className="px-3 py-1.5 bg-[#00c853]/10 hover:bg-[#00c853]/20 border border-[#00c853]/30 rounded-lg text-xs text-[#00a846] transition-all"
             >
               ↺ 复位
             </button>
             <button
               onClick={() => setShowInfo(!showInfo)}
-              className="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs text-gray-300 transition-all"
+              className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-lg text-xs text-gray-700 transition-all"
             >
               ℹ️ 信息
             </button>
@@ -252,7 +252,7 @@ export default function App() {
 
       {/* Instructions */}
       <div className="absolute bottom-4 right-4 pointer-events-none z-10">
-        <div className="text-right text-gray-600 text-[10px] space-y-0.5">
+        <div className="text-right text-gray-400 text-[10px] space-y-0.5">
           <p>🖱️ 左键拖拽旋转</p>
           <p>🖱️ 右键拖拽平移</p>
           <p>🖱️ 滚轮缩放</p>
@@ -269,7 +269,7 @@ export default function App() {
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 selectedModule === i
                   ? 'bg-[#00c853] scale-150'
-                  : 'bg-gray-700'
+                  : 'bg-gray-300'
               }`}
             ></div>
           ))}

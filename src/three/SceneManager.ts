@@ -28,8 +28,8 @@ export class SceneManager {
 
     // Scene
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x0a0a0f);
-    this.scene.fog = new THREE.Fog(0x0a0a0f, 15, 30);
+    this.scene.background = new THREE.Color(0xf5f5f5);
+    this.scene.fog = new THREE.Fog(0xf5f5f5, 15, 30);
 
     // Camera
     this.camera = new THREE.PerspectiveCamera(
@@ -50,7 +50,7 @@ export class SceneManager {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.2;
+    this.renderer.toneMappingExposure = 1.0;
     container.appendChild(this.renderer.domElement);
 
     // Controls
@@ -81,12 +81,12 @@ export class SceneManager {
   }
 
   setupLights() {
-    // Ambient light
-    const ambient = new THREE.AmbientLight(0x404060, 0.5);
+    // Ambient light - stronger for light background
+    const ambient = new THREE.AmbientLight(0xffffff, 0.8);
     this.scene.add(ambient);
 
     // Main key light
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
     keyLight.position.set(5, 8, 5);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.set(2048, 2048);
@@ -99,17 +99,17 @@ export class SceneManager {
     this.scene.add(keyLight);
 
     // Fill light
-    const fillLight = new THREE.DirectionalLight(0x4488ff, 0.4);
+    const fillLight = new THREE.DirectionalLight(0x88aaff, 0.6);
     fillLight.position.set(-5, 3, -5);
     this.scene.add(fillLight);
 
     // Rim light
-    const rimLight = new THREE.DirectionalLight(0x00c853, 0.3);
+    const rimLight = new THREE.DirectionalLight(0x00c853, 0.4);
     rimLight.position.set(0, -2, -5);
     this.scene.add(rimLight);
 
     // Point lights for highlights
-    const pointLight1 = new THREE.PointLight(0x00c853, 0.5, 10);
+    const pointLight1 = new THREE.PointLight(0x00c853, 0.4, 10);
     pointLight1.position.set(3, 2, 3);
     this.scene.add(pointLight1);
 
@@ -122,7 +122,7 @@ export class SceneManager {
     // Ground plane
     const groundGeo = new THREE.PlaneGeometry(30, 30);
     const groundMat = new THREE.MeshStandardMaterial({
-      color: 0x080810,
+      color: 0xe8e8e8,
       roughness: 0.9,
       metalness: 0.1,
     });
@@ -133,7 +133,7 @@ export class SceneManager {
     this.scene.add(ground);
 
     // Grid helper
-    const grid = new THREE.GridHelper(20, 40, 0x111122, 0x111122);
+    const grid = new THREE.GridHelper(20, 40, 0xcccccc, 0xdddddd);
     grid.position.y = -2.49;
     this.scene.add(grid);
   }
